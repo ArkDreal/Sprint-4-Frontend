@@ -20,12 +20,12 @@ class GitHub extends Component
      console.log('A função está funcionando')
 
      // fetch('https://api.github.com/user')
-     fetch('https://api.github.com/users/' + this.state.username + '/repos')
+     fetch('https://api.github.com/users/' + this.state.username + '/repos?per_page=10')
      // fetch('https://api.github.com/users/ArkDreal/repos')
      
      .then(resposta => resposta.json())
 
-     .then(lista => this.setState({ listaRespositorios : lista }))
+     .then(lista => this.setState({ listaRepositorios : lista }))
 
      .catch ( erro => console.log(erro))
    }
@@ -67,8 +67,7 @@ class GitHub extends Component
               </tr>
             </thead>
             <tbody>
-              {  this.state.listaRepositorios.map( (repositorio) => {  
-                console.log(repositorio);     
+              {  this.state.listaRepositorios.map( (repositorio) => {    
                   return(
                     <tr key={repositorio.id}>
                       <td>{repositorio.id}</td>
